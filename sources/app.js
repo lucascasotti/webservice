@@ -1,15 +1,9 @@
 import express from 'express'
+import router from './router.js'
 
 const server = express();
 const port = process.env.PORT || 3000;
 
-server.get('/users', function(req, res) {
-  const users = [
-    {name: 'Darlan'},
-    {name: 'Lucas'}
-  ]
-  res.json(users);
-  console.log(req);
-})
+server.use('/api', router)
 
 server.listen(port, () => console.log(`localhost:${port}`));
