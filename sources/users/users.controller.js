@@ -1,11 +1,13 @@
+import Users from './users.model.js'
+
+console.log(Users);
+
 module.exports = {
   list,
 }
 
 function list (req, res) {
-  const users = [
-    {name: 'Darlan'},
-    {name: 'Lucas'}
-  ]
-  res.json(users);
+  Users.find ({}, function (err, users) {
+    res.json(users);
+  })
 }
