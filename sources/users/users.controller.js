@@ -7,7 +7,7 @@ module.exports = {
 }
 
 function list (req, res) {
-  Users.find ({}, function (err, users) {
-    res.json(users);
-  })
+  Users
+    .find()
+    .then(users => res.json(users))
 }
