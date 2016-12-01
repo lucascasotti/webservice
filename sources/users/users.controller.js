@@ -1,6 +1,6 @@
 import Users from './users.model.js'
 
-console.log(Users);
+const privateFields = '-password -__v'
 
 module.exports = {
   list,
@@ -11,7 +11,7 @@ module.exports = {
 
 function list (req, res) {
   Users
-    .find({active: {$ne: false}}, '-password -__v')
+    .find({active: {$ne: false}}, privateFields)
     // Quando não se trabalha o parametro, pode passar diretamente o res.json, ficando assim
     // .then(res.json)
     .then(users => res.json(users))
@@ -19,7 +19,7 @@ function list (req, res) {
 
 function get (req, res) {
   Users
-    .findById(req.params.id)
+    .findById(req.params.id, privateFields)
     .then(user => res.json(user))
     .catch()
 }
