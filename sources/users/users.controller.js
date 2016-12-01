@@ -11,7 +11,7 @@ module.exports = {
 
 function list (req, res) {
   Users
-    .find({active: {$ne: false}})
+    .find({active: {$ne: false}}, '-password -__v')
     // Quando não se trabalha o parametro, pode passar diretamente o res.json, ficando assim
     // .then(res.json)
     .then(users => res.json(users))
