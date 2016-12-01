@@ -11,14 +11,14 @@ router.param('id', validate.id)
 router
   .route('/users')
   .get(users.list)
+  .post(users.create)
 
 router
   // É possivel passar uma regex aqui caso queira algo muito específico, ficando
   // .route(/regex/)
   .route('/users/:id')
   .get(users.get)
+  .delete(users.disable)
 
 
 module.exports = router
-
-
