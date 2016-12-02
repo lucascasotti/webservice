@@ -4,6 +4,11 @@ import validate from './validate/validate.controller.js'
 
 const router = Router()
 
+// As rotas respeitam a ordem de criação portanto é necessário verificar se existe alguma rota que pode parecer
+// Validar qual deve ser olhada primeiro.
+// Neste caso a rota Authenticate poderia conflitar com a rota users/:id, mas como ele é post poderia dar conflito,
+// Portanto deve ser usado primeiro
+
 router
 	.route('/users/authenticate')
 	.post(users.authenticate)
