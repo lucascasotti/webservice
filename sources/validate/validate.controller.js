@@ -1,7 +1,9 @@
 import {isValid as isValidId} from 'valid-objectid'
+import jwt from 'jsonwebtoken'
 
 module.exports = {
   id,
+  token 
 }
 
 function id (req, res, next, value) {
@@ -16,4 +18,23 @@ function id (req, res, next, value) {
   } 
 
   next()
+}
+
+function token(req, res, next) {
+  const token = req.headers.token
+    || req.body.token
+    || req.body.token
+
+    jwt.verify(token, '86y123unx23n8qdhwb81by1z2', (err, decoded) => {
+      if(err) {
+        const message = 'invalid token'
+        return res
+          .status(401)
+          .json({message})
+      }
+
+      req.decoded = decoded
+
+      next()
+    })
 }

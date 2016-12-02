@@ -4,13 +4,14 @@ import validate from './validate/validate.controller.js'
 
 const router = Router()
 
-// Quando se tem um parâmetro que esta em várias rotas, você pode criar um validador para esse parâmetro.
-// Os parametros esperados são ([nome], callback)
-router.param('id', validate.id)
-
 router
 	.route('/users/authenticate')
 	.post(users.authenticate)
+
+router.use(validate.token)
+// Quando se tem um parâmetro que esta em várias rotas, você pode criar um validador para esse parâmetro.
+// Os parametros esperados são ([nome], callback)
+router.param('id', validate.id)
 
 router
   .route('/users')
