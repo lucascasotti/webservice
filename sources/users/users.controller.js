@@ -60,7 +60,7 @@ function authenticate(req, res) {
     .then(returnToken)
     .catch(() => res.status(401).json({message: 'invalid credentials'}))
 
-  function returnToken() {
+  function returnToken(user) {
     console.log(user)
     const id = user.id
     const token = jwt.sign({id, email}, '86y123unx23n8qdhwb81by1z2')
