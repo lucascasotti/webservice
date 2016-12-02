@@ -5,6 +5,9 @@
   "description": "atividade de webservice",
   "main": "sources/app.js",
   "scripts": {
+    "prehello": "echo 'pre script'",
+    "poshello": "echo 'pos script'",
+    "hello": "echo 'hello world'",
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "./node_modules/babel-cli/bin/babel-node.js sources/app.js",
     "dev": "node_modules/babel-watch/babel-watch.js sources/app.js"
